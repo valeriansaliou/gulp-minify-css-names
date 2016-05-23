@@ -15,7 +15,7 @@ var Replacer = function(options) {
     var currentIndex = 0;
     var namesMap = {};
 
-    this.regExp = new RegExp(prefix + "([a-zA-Z0-9_-]*)" + postfix, "ig");
+    this.regExp = new RegExp(prefix + "([a-zA-Z0-9_-]*)" + postfix, "g");
 
     this.replaceFn = function(str) {
         if (!namesMap[str]) {
