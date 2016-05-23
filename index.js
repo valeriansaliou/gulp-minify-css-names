@@ -9,8 +9,8 @@ var decToAnyOptions = {
 };
 
 var Replacer = function(options) {
-    var prefix  = options.prefix || "-pre-";
-    var postfix = options.postfix || "-post-";
+    var prefix  = (options.prefix  !== undefined ? options.prefix  : "-pre-");
+    var postfix = (options.postfix !== undefined ? options.postfix : "-post-");
 
     var currentIndex = 0;
     var namesMap = {};
