@@ -1,2 +1,2 @@
-var $div = document.querySelector('#test3--s--');
-$div.id = 'test10--s--';
+var $div = document.querySelector('#-pre-test3-post-');
+$div.id = '-pre-test10-post-';

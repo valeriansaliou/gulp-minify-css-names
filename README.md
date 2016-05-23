@@ -1,23 +1,28 @@
-# gulp-minify-cssnames [![NPM version][npm-image]][npm-url]
-> Gulp plugin for minify css classes and css ids
+# gulp-minify-css-names
+
+> Gulp plugin to minify CSS classes and CSS IDs
+
+**Forked from**: [gulp-minify-cssnames](https://github.com/Connormiha/gulp-minify-cssnames) from [@Connormiha](https://github.com/Connormiha).
 
 ## Usage
-Minifying all names(class, id) with some postfix (default: '--s--').
+
+Minifying all names(class, id) with some postfix (default: '-post-').
 
 ### Example
+
 We have css file:
 
 ```css
-.menu--s-- {color: red;}
-.menu_top--s-- {color: black;}
-.menu__item--s-- {color: green;}
-.menu__item_active--s-- {color: blue;}
-.menu__item_active--s--::before {content: 'active'}
+.-pre-menu-post- {color: red;}
+.-pre-menu_top-post- {color: black;}
+.-pre-menu_item-post- {color: green;}
+.-pre-menu_item_active-post- {color: blue;}
+.-pre-menu_item_active-post-::before {content: 'active'}
 ```
 
 ```javascript
 var gulp = require('gulp');
-var gulpMinifyCssNames = require('gulp-minify-cssnames');
+var gulpMinifyCssNames = require('gulp-minify-css-names');
 
 gulp.task('minify-css-names', function() {
     return gulp.src(['src/*.css'])
@@ -27,6 +32,7 @@ gulp.task('minify-css-names', function() {
 ```
 
 #### Result
+
 ```css
 .a0 {color: red;}
 .a1 {color: black;}
@@ -36,35 +42,40 @@ gulp.task('minify-css-names', function() {
 ```
 
 ### Example2
+
 Our project has 3 files:
 
 ##### style.css
+
 ```css
-.menu--s-- {color: red;}
-.menu_top--s-- {color: black;}
-.menu__item--s-- {color: green;}
-.menu__item_active--s-- {color: blue;}
-.menu__item_active--s--::before {content: 'active'}
+.-pre-menu-post- {color: red;}
+.-pre-menu_top-post- {color: black;}
+.-pre-menu_item-post- {color: green;}
+.-pre-menu_item_active-post- {color: blue;}
+.-pre-menu_item_active-post-::before {content: 'active'}
 ```
 
 ##### index.html
+
 ```html
-<div class="menu--s--" id="main-menu--s--">
-    <div class="menu__item--s--">1</div>
-    <div class="menu__item--s--">2</div>
-    <div class="menu__item--s-- .menu__item_active--s--">3</div>
+<div class="menu-post-" id="-pre-main-menu-post-">
+    <div class="menu_item-post-">1</div>
+    <div class="menu_item-post-">2</div>
+    <div class="menu_item-post- .-pre-menu_item_active-post-">3</div>
 </div>
 ```
 ##### app.js
+
 ```javascript
-var $menuItems =  document.querySelectorAll('.menu__item--s--');
-var $mainMenu = document.querySelector('#main-menu--s--');
+var $menuItems =  document.querySelectorAll('.-pre-menu_item-post-');
+var $mainMenu = document.querySelector('#-pre-main-menu-post-');
 ```
 
 ##### Gulp task
+
 ```javascript
 var gulp = require('gulp');
-var gulpMinifyCssNames = require('gulp-minify-cssnames');
+var gulpMinifyCssNames = require('gulp-minify-css-names');
 
 gulp.task('minify-css-names', function() {
     return gulp.src(['src/style.css', 'src/index.html', 'src/app.js'])
@@ -74,6 +85,7 @@ gulp.task('minify-css-names', function() {
 ```
 
 #### Result
+
 style.css
 ```css
 .a0 {color: red;}
@@ -97,20 +109,32 @@ var $mainMenu = document.querySelector('#a4');
 ```
 
 ## API
-### gulp-minify-cssnames([options])
+
+### gulp-minify-css-names([options])
 
 #### options
+
 Type: `Object`
 
+##### options.prefix
+
+Type: `String`
+Default: `"-pre-"`
+
+Alternative prefix for CSS names.
+`Important: prefix should be valid for CSS class and ID`
+
 ##### options.postfix
-Type: `String`  
-Default: `"--s--"`  
 
-Alternative postfix for css names.  
-`Important: postfix should be valid for css class and id`
+Type: `String`
+Default: `"-post-"`
 
-### Why need a postfix?
+Alternative postfix for CSS names.
+`Important: postfix should be valid for CSS class and ID`
+
+### Why need a prefix/postfix?
+
 This plugin match by RegExp in all file/stream content. This will reduce the likelihood of wrong replacement.
 
-[npm-url]: https://npmjs.org/package/gulp-minify-cssnames
-[npm-image]: https://img.shields.io/npm/v/gulp-minify-cssnames.svg
+[npm-url]: https://npmjs.org/package/gulp-minify-css-names
+[npm-image]: https://img.shields.io/npm/v/gulp-minify-css-names.svg

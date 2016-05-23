@@ -2,16 +2,16 @@ body {
     color: red;
 }
 
-#test--s-- {
+#-pre-test-post- {
     color: green;
 }
 
-#test2--s-- {
+#-pre-test2-post- {
     color: green;
 }
 
-#test3--s--, #test4--s-- {
+#-pre-test3-post-, #-pre-test4-post- {
     color: green;
 }
 
-#test2--s-- {width: 100px;}
+#-pre-test2-post- {width: 100px;}

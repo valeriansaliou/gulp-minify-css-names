@@ -2,15 +2,15 @@ body {
     color: red;
 }
 
-#a0 {
+#-alt-prefix-test-post- {
     color: green;
 }
 
-#a1 {
+#-alt-prefix-test2-post- {
     color: green;
 }
 
-#a2, #a3 {
+#-alt-prefix-test3-post-, #-alt-prefix-test4-post- {
     color: green;
 }
 

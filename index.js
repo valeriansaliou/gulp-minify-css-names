@@ -1,29 +1,30 @@
-'use strict';
+"use strict";
 
-var Transform = require('readable-stream/transform');
-var rs = require('replacestream');
-var decToAny = require('decimal-to-any');
+var Transform = require("readable-stream/transform");
+var rs        = require("replacestream");
+var decToAny  = require("decimal-to-any");
 
 var decToAnyOptions = {
-    alphabet: '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'
+    alphabet: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
 };
 
 var Replacer = function(options) {
-    var postfix = options.postfix || '--s--';
+    var prefix  = options.prefix || "-pre-";
+    var postfix = options.postfix || "-post-";
 
     var currentIndex = 0;
     var namesMap = {};
 
-    this.regExp = new RegExp('[\\w_-]+?' + postfix, 'ig');
+    this.regExp = new RegExp(prefix + "[\\w_-]+?" + postfix, "ig");
     this.replaceFn = function(str) {
         if (!namesMap[str]) {
-            namesMap[str] = 'a' + decToAny(currentIndex, decToAnyOptions.alphabet.length, decToAnyOptions);
+            namesMap[str] = "a" + decToAny(currentIndex, decToAnyOptions.alphabet.length, decToAnyOptions);
             currentIndex++;
         }
 
         return namesMap[str];
     };
-}
+};
 
 module.exports = function(options) {
     options = options || {};
@@ -39,6 +40,7 @@ module.exports = function(options) {
 
             if (file.isBuffer()) {
                 file.contents = new Buffer(String(file.contents).replace(replacer.regExp, replacer.replaceFn));
+
                 return callback(null, file);
             }
 

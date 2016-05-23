@@ -2,16 +2,16 @@ body {
     color: red;
 }
 
-#test--alt-postfix-- {
+#-pre-test-alt-postfix- {
     color: green;
 }
 
-#test2--alt-postfix-- {
+#-pre-test2-alt-postfix- {
     color: green;
 }
 
-#test3--alt-postfix--, #test4--alt-postfix-- {
+#-pre-test3-alt-postfix-, #-pre-test4-alt-postfix- {
     color: green;
 }
 
-#test2--s-- {width: 100px;}
+#-pre-test2-post- {width: 100px;}
