@@ -124,6 +124,82 @@ describe('gulp-minify-cssnames', function() {
             stream.end();
         });
 
+        it('Should work with buffer (alternative prepend)', function(done) {
+            var stream = minify({prefix: '-alt-prepend-', prepend: 'prepend-'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-prepend.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.readFileSync('test/fixtures/style.alt-prepend.css')
+            });
+
+            stream.on('data', function(file) {
+                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-prepend.css', 'utf8'));
+                done();
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
+        it('Should work with stream (alternative prepend)', function(done) {
+            var stream = minify({prefix: '-alt-prepend-', prepend: 'prepend-'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-prepend.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.createReadStream('test/fixtures/style.alt-prepend.css')
+            });
+
+            stream.on('data', function(file) {
+                file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
+                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-prepend.css', 'utf8'));
+                    done();
+                }));
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
+        it('Should work with buffer (alternative append)', function(done) {
+            var stream = minify({prefix: '-alt-append-', append: '-append'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-append.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.readFileSync('test/fixtures/style.alt-append.css')
+            });
+
+            stream.on('data', function(file) {
+                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-append.css', 'utf8'));
+                done();
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
+        it('Should work with stream (alternative append)', function(done) {
+            var stream = minify({prefix: '-alt-append-', append: '-append'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-append.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.createReadStream('test/fixtures/style.alt-append.css')
+            });
+
+            stream.on('data', function(file) {
+                file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
+                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-append.css', 'utf8'));
+                    done();
+                }));
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
         it('Should work with group files in real Gulp', function(done) {
             var files = ['test/fixtures/group/app.js', 'test/fixtures/group/style.css', 'test/fixtures/group/index.html'];
             var count = files.length;

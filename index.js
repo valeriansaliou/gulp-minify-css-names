@@ -12,6 +12,9 @@ var Replacer = function(options) {
     var prefix  = (options.prefix  !== undefined ? options.prefix  : "-pre-");
     var postfix = (options.postfix !== undefined ? options.postfix : "-post-");
 
+    var prepend = (options.prepend !== undefined ? options.prepend : "a");
+    var append  = (options.append  !== undefined ? options.append  : "");
+
     var currentIndex = 0;
     var namesMap = {};
 
@@ -19,7 +22,7 @@ var Replacer = function(options) {
 
     this.replaceFn = function(str) {
         if (!namesMap[str]) {
-            namesMap[str] = "a" + decToAny(currentIndex, decToAnyOptions.alphabet.length, decToAnyOptions);
+            namesMap[str] = prepend + decToAny(currentIndex, decToAnyOptions.alphabet.length, decToAnyOptions) + append;
             currentIndex++;
         }
 
