@@ -132,7 +132,23 @@ Default: `"-post-"`
 Alternative postfix for CSS names.
 `Important: postfix should be valid for CSS class and ID`
 
-### Why need a prefix/postfix?
+##### options.prepend
+
+Type: `String`
+Default: `"a"`
+
+Post-processing: prepend given string to transformed CSS class and ID.
+`Important: prepend should be valid for CSS class and ID`
+
+##### options.append
+
+Type: `String`
+Default: `""`
+
+Post-processing: append given string to transformed CSS class and ID.
+`Important: append should be valid for CSS class and ID`
+
+### Why need a prefix/append?
 
 This plugin match by RegExp in all file/stream content. This will reduce the likelihood of wrong replacement.
 
