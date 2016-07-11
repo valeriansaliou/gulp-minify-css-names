@@ -1,0 +1,3 @@
+node_js:
+  - '6.3'
+script: "npm test"
