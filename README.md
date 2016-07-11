@@ -1,5 +1,7 @@
 # gulp-minify-css-names
 
+[![Build Status](https://travis-ci.org/valeriansaliou/gulp-minify-css-names.svg?branch=master)](https://travis-ci.org/valeriansaliou/gulp-minify-css-names)
+
 > Gulp plugin to minify CSS classes and CSS IDs
 
 **Forked from**: [gulp-minify-cssnames](https://github.com/Connormiha/gulp-minify-cssnames) from [@Connormiha](https://github.com/Connormiha).
