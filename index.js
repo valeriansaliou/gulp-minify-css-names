@@ -2,11 +2,6 @@
 
 var Transform = require("readable-stream/transform");
 var rs        = require("replacestream");
-var decToAny  = require("decimal-to-any");
-
-var decToAnyOptions = {
-    alphabet: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
-};
 
 var Replacer = function(options) {
     var prefix  = (options.prefix  !== undefined ? options.prefix  : "-pre-");
@@ -22,8 +17,7 @@ var Replacer = function(options) {
 
     this.replaceFn = function(str) {
         if (!namesMap[str]) {
-            namesMap[str] = prepend + decToAny(currentIndex, decToAnyOptions.alphabet.length, decToAnyOptions) + append;
-            currentIndex++;
+            namesMap[str] = prepend + (currentIndex++) + append;
         }
 
         return namesMap[str];

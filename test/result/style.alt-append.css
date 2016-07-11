@@ -1,0 +1,17 @@
+body {
+    color: red;
+}
+
+#a0-append {
+    color: green;
+}
+
+#a1-append {
+    color: green;
+}
+
+#a2-append, #a3-append {
+    color: green;
+}
+
+#-pre-test2-post- {width: 100px;}

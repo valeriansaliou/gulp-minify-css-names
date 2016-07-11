@@ -1,0 +1,17 @@
+body {
+    color: red;
+}
+
+#prepend-0 {
+    color: green;
+}
+
+#prepend-1 {
+    color: green;
+}
+
+#prepend-2, #prepend-3 {
+    color: green;
+}
+
+#-pre-test2-post- {width: 100px;}

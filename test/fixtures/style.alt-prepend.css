@@ -1,0 +1,17 @@
+body {
+    color: red;
+}
+
+#-alt-prepend-test-post- {
+    color: green;
+}
+
+#-alt-prepend-test2-post- {
+    color: green;
+}
+
+#-alt-prepend-test3-post-, #-alt-prepend-test4-post- {
+    color: green;
+}
+
+#-pre-test2-post- {width: 100px;}
