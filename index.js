@@ -20,7 +20,7 @@ var Replacer = function(options) {
 
     this.replaceFn = function(str) {
         if (!namesMap[str]) {
-            var minified = (method === "hash" ? farmhash.hash64(str) : currentIndex++);
+            var minified = (method === "hash" ? (+farmhash.hash64(str)).toString(36) : currentIndex++);
 
             namesMap[str] = prepend + minified + append;
         }
