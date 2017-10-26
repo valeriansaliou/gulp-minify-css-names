@@ -15,6 +15,7 @@ var Replacer = function(options) {
 
     var currentIndex = 0;
     var namesMap = {};
+    var reverseMap = {};
 
     this.regExp = new RegExp(prefix + "([a-zA-Z0-9_-]*)" + postfix, "g");
 
@@ -34,7 +35,16 @@ var Replacer = function(options) {
                 }
             }
 
-            namesMap[str] = prepend + number.toString(36) + append;
+            var minified = number.toString(36);
+
+            // Check collisions (ensure builds relying on an hasher are collision-safe)
+            if (!reverseMap[minified]) {
+                reverseMap[minified] = str;
+            } else if (reverseMap[minified] !== str) {
+                throw new Error("Collision detected for class: " + str + " - aborting");
+            }
+
+            namesMap[str] = prepend + minified + append;
         }
 
         return namesMap[str];
