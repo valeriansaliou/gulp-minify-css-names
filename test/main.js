@@ -48,6 +48,82 @@ describe('gulp-minify-cssnames', function() {
             stream.end();
         });
 
+        it('Should work with buffer (alternative method-hash-strong)', function(done) {
+            var stream = minify({method: 'hash-strong'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-method-hash-strong.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.readFileSync('test/fixtures/style.alt-method-hash-strong.css')
+            });
+
+            stream.on('data', function(file) {
+                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-method-hash-strong.css', 'utf8'));
+                done();
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
+        it('Should work with stream (alternative method-hash-strong)', function(done) {
+            var stream = minify({method: 'hash-strong'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-method-hash-strong.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.createReadStream('test/fixtures/style.alt-method-hash-strong.css')
+            });
+
+            stream.on('data', function(file) {
+                file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
+                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-method-hash-strong.css', 'utf8'));
+                    done();
+                }));
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
+        it('Should work with buffer (alternative method-hash-weak)', function(done) {
+            var stream = minify({method: 'hash-weak'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-method-hash-weak.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.readFileSync('test/fixtures/style.alt-method-hash-weak.css')
+            });
+
+            stream.on('data', function(file) {
+                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-method-hash-weak.css', 'utf8'));
+                done();
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
+        it('Should work with stream (alternative method-hash-weak)', function(done) {
+            var stream = minify({method: 'hash-weak'});
+            var file = new File({
+                path: 'test/fixtures/style.alt-method-hash-weak.css',
+                cwd: 'test/',
+                base: 'test/fixtures',
+                contents: fs.createReadStream('test/fixtures/style.alt-method-hash-weak.css')
+            });
+
+            stream.on('data', function(file) {
+                file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
+                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-method-hash-weak.css', 'utf8'));
+                    done();
+                }));
+            });
+
+            stream.write(file);
+            stream.end();
+        });
+
         it('Should work with buffer (alternative postfix)', function(done) {
             var stream = minify({postfix: '-alt-postfix-'});
             var file = new File({

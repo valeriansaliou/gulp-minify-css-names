@@ -20,9 +20,21 @@ var Replacer = function(options) {
 
     this.replaceFn = function(str) {
         if (!namesMap[str]) {
-            var minified = (method === "hash" ? (+farmhash.hash64(str)).toString(36) : currentIndex++);
+            var number;
 
-            namesMap[str] = prepend + minified + append;
+            switch (method) {
+                case "hash-weak":
+                case "hash-strong": {
+                    var fnHasher = (method === "hash-weak" ? farmhash.hash32 : farmhash.hash64);
+                    number = (+fnHasher(str));
+                    break;
+                }
+                default: {
+                    number = currentIndex++;
+                }
+            }
+
+            namesMap[str] = prepend + number.toString(36) + append;
         }
 
         return namesMap[str];

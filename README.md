@@ -123,8 +123,8 @@ Type: `Object`
 Type: `String`
 Default: `index`
 
-CSS names minification method (either `index` or `hash`).
-You may use the non-default `hash` method to ensure generated class names are always static given the same real class name. This can be useful if you're having cache busting issues between your HTML and CSS (eg. caches out-of-sync).
+CSS names minification method (either `index`, `hash-weak` or `hash-strong`).
+You may use the non-default `hash-*` methods to ensure generated class names are always static given the same real class name. This can be useful if you're having cache busting issues between your HTML and CSS (eg. caches out-of-sync). The `hash-weak` is a smaller 32-bits hash while the `hash-strong` is a stronger 64-bits hash (use the strong one if you have so many CSS classes that you risk hash collision).
 
 ##### options.prefix
 
