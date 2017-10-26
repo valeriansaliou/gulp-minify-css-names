@@ -2,8 +2,11 @@
 
 var Transform = require("readable-stream/transform");
 var rs        = require("replacestream");
+var farmhash  = require("farmhash");
 
 var Replacer = function(options) {
+    var method  = (options.method  !== undefined ? options.method  : "index");
+
     var prefix  = (options.prefix  !== undefined ? options.prefix  : "-pre-");
     var postfix = (options.postfix !== undefined ? options.postfix : "-post-");
 
@@ -17,7 +20,9 @@ var Replacer = function(options) {
 
     this.replaceFn = function(str) {
         if (!namesMap[str]) {
-            namesMap[str] = prepend + (currentIndex++) + append;
+            var minified = (method === "hash" ? farmhash.hash64(str) : currentIndex++);
+
+            namesMap[str] = prepend + minified + append;
         }
 
         return namesMap[str];

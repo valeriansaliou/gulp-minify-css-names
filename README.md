@@ -118,6 +118,14 @@ var $mainMenu = document.querySelector('#a4');
 
 Type: `Object`
 
+##### options.method
+
+Type: `String`
+Default: `index`
+
+CSS names minification method (either `index` or `hash`).
+You may use the non-default `hash` method to ensure generated class names are always static given the same real class name. This can be useful if you're having cache busting issues between your HTML and CSS (eg. caches out-of-sync).
+
 ##### options.prefix
 
 Type: `String`
