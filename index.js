@@ -13,6 +13,8 @@ var Replacer = function(options) {
     var prepend = (options.prepend !== undefined ? options.prepend : "a");
     var append  = (options.append  !== undefined ? options.append  : "");
 
+    var buster  = (options.buster  !== undefined ? options.buster  : "");
+
     var currentIndex = 0;
     var namesMap = {};
     var reverseMap = {};
@@ -27,7 +29,7 @@ var Replacer = function(options) {
                 case "hash-weak":
                 case "hash-strong": {
                     var fnHasher = (method === "hash-weak" ? farmhash.hash32 : farmhash.hash64);
-                    number = (+fnHasher(str));
+                    number = (+fnHasher(buster + str));
                     break;
                 }
                 default: {

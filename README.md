@@ -158,6 +158,14 @@ Default: `""`
 Post-processing: append given string to transformed CSS class and ID.
 `Important: append should be valid for CSS class and ID`
 
+##### options.buster
+
+Type: `String`
+Default: `""`
+
+Hash buster: concatenate the value to hash with given buster value. Can be used to change all hashes at the same time.
+`Requires: method to be a hash method`
+
 ### Why need a prefix/append?
 
 This plugin match by RegExp in all file/stream content. This will reduce the likelihood of wrong replacement.
