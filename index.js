@@ -14,6 +14,7 @@ var Replacer = function(options) {
     var append  = (options.append  !== undefined ? options.append  : "");
 
     var buster  = (options.buster  !== undefined ? options.buster  : "");
+    var slice   = (options.slice   !== undefined ? options.slice   : -1);
 
     var currentIndex = 0;
     var namesMap = {};
@@ -38,6 +39,10 @@ var Replacer = function(options) {
             }
 
             var minified = number.toString(36);
+
+            if (slice > 0 && minified.length > slice) {
+                minified = minified.substring(0, slice);
+            }
 
             // Check collisions (ensure builds relying on an hasher are collision-safe)
             if (!reverseMap[minified]) {

@@ -166,6 +166,13 @@ Default: `""`
 Hash buster: concatenate the value to hash with given buster value. Can be used to change all hashes at the same time.
 `Requires: method to be a hash method`
 
+##### options.slice
+
+Type: `Number`
+Default: `-1`
+
+Slice minified name: limit the final minified to provided length. This can be used to pick the first values of the hash (removing the last characters) and thus reduce the final size of the CSS file even more. As this reduces entropy on the final values, the collision detector may (or may not) kick in, especially if you have a lot of different CSS names.
+
 ### Why need a prefix/append?
 
 This plugin match by RegExp in all file/stream content. This will reduce the likelihood of wrong replacement.
