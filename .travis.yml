@@ -1,7 +1,0 @@
-node_js:
-  - '6.3'
-before_script:
-  - 'npm install -g mocha'
-install:
-  - 'npm install'
-script: "npm test"
