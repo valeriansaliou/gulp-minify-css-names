@@ -71,7 +71,7 @@ module.exports = function(options) {
             }
 
             if (file.isBuffer()) {
-                file.contents = new Buffer(String(file.contents).replace(replacer.regExp, replacer.replaceFn));
+                file.contents = Buffer.from(String(file.contents).replace(replacer.regExp, replacer.replaceFn));
 
                 return callback(null, file);
             }

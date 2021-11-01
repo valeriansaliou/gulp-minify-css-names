@@ -1,6 +1,6 @@
 {
   "name": "gulp-minify-css-names",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "description": "Gulp plugin to minify CSS classes and CSS IDs",
   "main": "index.js",
   "scripts": {
@@ -13,10 +13,13 @@
   "author": "Valerian Saliou",
   "license": "MIT",
   "homepage": "https://github.com/valeriansaliou/gulp-minify-css-names",
+  "engines": {
+    "node": ">= 10.0.0"
+  },
   "dependencies": {
     "readable-stream": "^2.0.5",
     "replacestream": "^4.0.0",
-    "farmhash": "1.2.1"
+    "farmhash": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^3.4.1",
