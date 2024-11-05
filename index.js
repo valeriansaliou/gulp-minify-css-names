@@ -16,6 +16,8 @@ var Replacer = function(options) {
     var buster  = (options.buster  !== undefined ? options.buster  : "");
     var slice   = (options.slice   !== undefined ? options.slice   : -1);
 
+    var dryRun  = (options.dryRun  !== undefined ? options.dryRun  : false);
+
     var currentIndex = 0;
     var namesMap = {};
     var reverseMap = {};
@@ -54,7 +56,7 @@ var Replacer = function(options) {
             namesMap[str] = prepend + minified + append;
         }
 
-        return namesMap[str];
+        return (dryRun === true) ? str : namesMap[str];
     };
 };
 

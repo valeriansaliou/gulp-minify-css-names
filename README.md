@@ -173,6 +173,13 @@ Default: `-1`
 
 Slice minified name: limit the final minified to provided length. This can be used to pick the first values of the hash (removing the last characters) and thus reduce the final size of the CSS file even more. As this reduces entropy on the final values, the collision detector may (or may not) kick in, especially if you have a lot of different CSS names.
 
+##### options.dryRun
+
+Type: `Boolean`
+Default: `false`
+
+Minification dry-run: this will compute minified CSS class names, check for collisions and error out if an issue arise, but will not replace actual class names in the output. This can be used in development environments to simulate the behavior of the library without altering original class names, and easily switch it on and off to test things out.
+
 ### Why need a prefix/append?
 
 This plugin match by RegExp in all file/stream content. This will reduce the likelihood of wrong replacement.
