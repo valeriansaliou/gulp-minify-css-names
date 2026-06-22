@@ -1,6 +1,6 @@
 {
   "name": "gulp-minify-css-names",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Gulp plugin to minify CSS classes and CSS IDs",
   "main": "index.js",
   "type": "module",
