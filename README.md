@@ -23,8 +23,8 @@ We have css file:
 ```
 
 ```javascript
-var gulp = require('gulp');
-var gulpMinifyCssNames = require('gulp-minify-css-names');
+import gulp from 'gulp';
+import gulpMinifyCssNames from 'gulp-minify-css-names';
 
 gulp.task('minify-css-names', function() {
     return gulp.src(['src/*.css'])
@@ -76,8 +76,8 @@ var $mainMenu = document.querySelector('#-pre-main-menu-post-');
 ##### Gulp task
 
 ```javascript
-var gulp = require('gulp');
-var gulpMinifyCssNames = require('gulp-minify-css-names');
+import gulp from 'gulp';
+import gulpMinifyCssNames from 'gulp-minify-css-names';
 
 gulp.task('minify-css-names', function() {
     return gulp.src(['src/style.css', 'src/index.html', 'src/app.js'])

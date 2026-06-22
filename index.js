@@ -1,8 +1,6 @@
-"use strict";
-
-var Transform = require("readable-stream/transform");
-var rs        = require("replacestream");
-var farmhash  = require("farmhash");
+import Transform from "readable-stream/transform.js";
+import rs from "replacestream";
+import { fingerprint32, fingerprint64 } from "farmhashjs";
 
 var Replacer = function(options) {
     var method  = (options.method  !== undefined ? options.method  : "index");
@@ -31,8 +29,8 @@ var Replacer = function(options) {
             switch (method) {
                 case "hash-weak":
                 case "hash-strong": {
-                    var fnHasher = (method === "hash-weak" ? farmhash.hash32 : farmhash.hash64);
-                    number = (+fnHasher(buster + str));
+                    var fnHasher = (method === "hash-weak" ? fingerprint32 : fingerprint64);
+                    number = Number(fnHasher(buster + str));
                     break;
                 }
                 default: {
@@ -60,7 +58,7 @@ var Replacer = function(options) {
     };
 };
 
-module.exports = function(options) {
+export default function(options) {
     options = options || {};
     var replacer = new Replacer(options);
 

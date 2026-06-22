@@ -3,8 +3,9 @@
   "version": "2.1.0",
   "description": "Gulp plugin to minify CSS classes and CSS IDs",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --experimental-modules"
   },
   "repository": {
     "type": "git",
@@ -14,18 +15,21 @@
   "license": "MIT",
   "homepage": "https://github.com/valeriansaliou/gulp-minify-css-names",
   "engines": {
-    "node": ">= 10.0.0"
+    "node": ">= 16.0.0"
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.11"
   },
   "dependencies": {
     "readable-stream": "^2.0.5",
     "replacestream": "^4.0.0",
-    "farmhash": "^3.2.1"
+    "farmhashjs": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^3.4.1",
     "concat-stream": "^1.5.1",
     "gulp": "^3.9.0",
-    "mocha": "^2.3.4",
+    "mocha": "^11.7.6",
     "stream-assert": "^2.0.3",
     "vinyl": "^1.1.0"
   }

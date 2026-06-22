@@ -1,12 +1,12 @@
 'use strict';
 
-var fs = require('fs');
-var concatStream = require('concat-stream');
-var gulp = require('gulp');
-var expect = require('chai').expect;
-var streamAssert = require('stream-assert');
-var File = require('vinyl');
-var minify = require('../');
+import fs from 'fs';
+import concatStream from 'concat-stream';
+import gulp from 'gulp';
+import chai from 'chai';
+import streamAssert from 'stream-assert';
+import File from 'vinyl';
+import minify from '../index.js';
 
 describe('gulp-minify-cssnames', function() {
     describe('Replace CSS names', function() {
@@ -20,7 +20,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.css', 'utf8'));
                 done();
             });
 
@@ -39,7 +39,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.css', 'utf8'));
                     done();
                 }));
             });
@@ -58,7 +58,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-method-hash-strong.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-method-hash-strong.css', 'utf8'));
                 done();
             });
 
@@ -77,7 +77,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-method-hash-strong.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.alt-method-hash-strong.css', 'utf8'));
                     done();
                 }));
             });
@@ -96,7 +96,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-method-hash-weak.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-method-hash-weak.css', 'utf8'));
                 done();
             });
 
@@ -115,7 +115,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-method-hash-weak.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.alt-method-hash-weak.css', 'utf8'));
                     done();
                 }));
             });
@@ -134,7 +134,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-postfix.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-postfix.css', 'utf8'));
                 done();
             });
 
@@ -153,7 +153,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-postfix.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.alt-postfix.css', 'utf8'));
                     done();
                 }));
             });
@@ -172,7 +172,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-prefix.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-prefix.css', 'utf8'));
                 done();
             });
 
@@ -191,7 +191,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-prefix.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.alt-prefix.css', 'utf8'));
                     done();
                 }));
             });
@@ -210,7 +210,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-prepend.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-prepend.css', 'utf8'));
                 done();
             });
 
@@ -229,7 +229,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-prepend.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.alt-prepend.css', 'utf8'));
                     done();
                 }));
             });
@@ -248,7 +248,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-append.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-append.css', 'utf8'));
                 done();
             });
 
@@ -267,7 +267,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-append.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.alt-append.css', 'utf8'));
                     done();
                 }));
             });
@@ -286,7 +286,7 @@ describe('gulp-minify-cssnames', function() {
             });
 
             stream.on('data', function(file) {
-                expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-buster.css', 'utf8'));
+                chai.expect(String(file.contents)).to.equal(fs.readFileSync('test/result/style.alt-buster.css', 'utf8'));
                 done();
             });
 
@@ -305,7 +305,7 @@ describe('gulp-minify-cssnames', function() {
 
             stream.on('data', function(file) {
                 file.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                    expect(data).to.equal(fs.readFileSync('test/result/style.alt-buster.css', 'utf8'));
+                    chai.expect(data).to.equal(fs.readFileSync('test/result/style.alt-buster.css', 'utf8'));
                     done();
                 }));
             });
@@ -323,7 +323,7 @@ describe('gulp-minify-cssnames', function() {
 
             files.forEach(function (item, index) {
                 stream = stream.pipe(streamAssert.nth(index, function(d) {
-                    expect(String(d.contents)).to.equal(fs.readFileSync(item.replace('fixtures', 'result'), 'utf8'));
+                    chai.expect(String(d.contents)).to.equal(fs.readFileSync(item.replace('fixtures', 'result'), 'utf8'));
                     if (--count === 0) {
                         done();
                     }
@@ -341,7 +341,7 @@ describe('gulp-minify-cssnames', function() {
             files.forEach(function (item, index) {
                 stream = stream.pipe(streamAssert.nth(index, function(d) {
                     d.contents.pipe(concatStream({encoding: 'string'}, function(data) {
-                        expect(data).to.equal(fs.readFileSync(item.replace('fixtures', 'result'), 'utf8'));
+                        chai.expect(data).to.equal(fs.readFileSync(item.replace('fixtures', 'result'), 'utf8'));
                         if (--count === 0) {
                             done();
                         }
